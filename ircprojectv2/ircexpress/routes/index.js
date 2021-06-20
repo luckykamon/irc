@@ -20,9 +20,9 @@ app.get('/', function (req, res) {
 })
 
 const fs = require('fs');
-pathUserJson = 'ircexpress/data/users.json';
-pathChannelMessage = 'ircexpress/data/channelMessage';
-pathChannelList = 'ircexpress/data/channelList';
+pathUserJson = 'data/users.json';
+pathChannelMessage = 'data/channelMessage';
+pathChannelList = 'data/channelList';
 try {
     fs.writeFileSync(pathUserJson, '[]'); //Réinitialise les utilisateurs connectés
     dataUserJson = JSON.parse(fs.readFileSync(pathUserJson));
@@ -58,7 +58,7 @@ let userNumber = 0;
 function saveDataChannelList() {
     try {
         for (let i = 0; i < Object.keys(dataChannelList).length; i++) {
-            fs.writeFileSync('ircexpress/data/channelList/' + Object.keys(dataChannelList)[i] + '.json', JSON.stringify(dataChannelList[Object.keys(dataChannelList)[i]]));
+            fs.writeFileSync('data/channelList/' + Object.keys(dataChannelList)[i] + '.json', JSON.stringify(dataChannelList[Object.keys(dataChannelList)[i]]));
         }
     } catch (err) {
         console.log("Erreur d'écriture de saveDataChannelList");
@@ -69,7 +69,7 @@ function saveDataChannelList() {
 function saveDataChannelMessage() {
     try {
         for (let i = 0; i < Object.keys(dataChannelMessage).length; i++) {
-            fs.writeFileSync('ircexpress/data/channelMessage/' + Object.keys(dataChannelMessage)[i] + '.json', JSON.stringify(dataChannelMessage[Object.keys(dataChannelMessage)[i]]));
+            fs.writeFileSync('data/channelMessage/' + Object.keys(dataChannelMessage)[i] + '.json', JSON.stringify(dataChannelMessage[Object.keys(dataChannelMessage)[i]]));
         }
     } catch (err) {
         console.log("Erreur d'écriture de dataChannelMessage");
@@ -232,8 +232,8 @@ io.on('connection', (socket) => {
                         socket.emit('deleteChannel', nameChannel)
                     }
                 }
-                const path1 = 'ircexpress/data/channelList/' + nameChannel + '.json';
-                const path2 = 'ircexpress/data/channelMessage/' + nameChannel + '.json';
+                const path1 = 'data/channelList/' + nameChannel + '.json';
+                const path2 = 'data/channelMessage/' + nameChannel + '.json';
                 fs.unlink(path1, (err) => {
                     if (err) {
                         socket.emit('erreur', `Une erreur s'est produite, code d'erreur 002`);
