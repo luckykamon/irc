@@ -1,0 +1,151 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+body {
+  background-color: #282c34;
+  font-family: Bahnschrift;
+
+}
+
+.App-header {
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+
+.ReactNav {
+  color:white;
+}
+
+.ReactChannels {
+
+  display: flex;
+  max-width: 20vh;
+  min-width: 20vh;
+  flex-direction: column;
+  color: white;
+  padding-left: 15px;
+
+}
+
+.ReactContainerA {
+  display : flex;
+  flex-direction:  row;
+  padding: 10px;
+
+}
+.ReactContainerB {
+  display : flex;
+  flex-direction:  column;
+  padding-left: 10px;
+}
+
+
+#messagesContainer {
+  background-color: #44424e;
+  color: white;
+  min-height: 70vh;
+  overflow:auto;
+  display:flex;
+  flex-direction: column-reverse;
+  max-height: 70vh;
+  border-radius:20px;
+}
+
+#onglets {
+
+  display: flex;
+  color: white;
+  padding: 10px;
+}
+
+
+#messages{
+  padding: 20px;
+}
+
+
+#listChannel {
+  color: black;
+}
+
+.ReactChannels{
+  width: 100%;
+}
+
+#listUser{
+  color: maroon;
+}
+
+
+
+
+#formSendMessage {
+  padding-top: 10px;
+  width: 80vw;
+  overflow: hidden;
+}
+#inputSendMessage {
+  background-color: lightsteelblue;
+  width: 100%;
+  height: 35px;
+}
+#spanSendMessage {
+  display: block;
+  overflow: hidden;
+  padding-right:10px;
+}
+#buttonSendMessage {
+  float: right;
+}
+
+#channels {
+  background-color: #606c9a;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+#listChannel{
+  color: white;
+
+}
+
+#help{
+  color: chocolate;
+}
+
+#buttonTheme, #buttonLucas {
+  font-size: 14px;
+  display : flex;
+  text-align: left;
+  background-color: #606c9a;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

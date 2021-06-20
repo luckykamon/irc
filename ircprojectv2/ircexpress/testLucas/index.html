@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Test Lucas</title>
+</head>
+
+<body>
+<H1>Hello</H1>
+<ul id="list">
+    <li>Premier élément</li>
+</ul>
+
+<input id="input">
+<button class="btn btn-primary" onclick="testForm()">Submit</button>
+
+
+<!-- CREATION SOCKET -->
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var a;
+    const socket = io();
+
+
+    function testForm() {
+        socket.emit('commands',document.getElementById("input").value, "general");
+    }
+
+    socket.on('consoleLog', function (msg) {
+        console.log(msg);
+    })
+
+    socket.on('messageChannel', function (msg) {
+        console.log(msg);
+    })
+
+    socket.on('newMessageChannel', function (msg, nameChannel) {
+        console.log("message reçu: " + msg);
+    })
+
+    socket.on('listUserOnChannel', function (msg, nameChannel) {
+        console.log("Liste des utilisateurs de la chaine " + nameChannel + ": " + msg);
+    })
+
+    socket.on('privateMessage', function (msg) {
+        console.log("Message privé: " + msg);
+    })
+
+    socket.on('list', function (list) {
+        console.log(list);
+    })
+
+    /**
+     * En cas d'erreur (j'avais pensé à une sorte de pop up qui s'affiche pendant 2-3 sec)
+     * @param msg D'où vient le problème
+     */
+    socket.on('erreur', function (msg) {
+        console.log(msg)
+    })
+
+    /**
+     * En cas de success (j'avais pensé à une sorte de pop up qui s'affiche pendant 2-3 sec)
+     * @param msg Indique la réussite
+     */
+    socket.on('success', function (msg) {
+        console.log(msg)
+    })
+
+</script>
+
+<!-- FIN CODE SOCKET -->
+</body>
+</html>
